@@ -1,0 +1,67 @@
+<div class='container' >
+    <h3>User Registration Form</h3>
+    <form [formGroup]='registerForm' #regForm = "ngForm" width='50%'>
+      
+        <div class='form-group'>
+          <label>First Name </label>
+          <input type="text" class='form-control' formControlName ='fname' />
+        </div>
+        <div class='alert alert-danger' [hidden]='registerForm.controls.fname.valid || registerForm.controls.fname.pristine'>
+          First Name is required 
+        </div>
+  
+        <div class='form-group'>
+          <label>Last Name </label>
+          <input type='text' class='form-control' formControlName='lname'/>
+        </div>
+        <div class='alert alert-danger' [hidden]='registerForm.controls.lname.valid || registerForm.controls.lname.pristine'>
+          Last Name is required
+        </div>
+        
+        <div class='form-group'>
+          <label>User Name</label>
+          <input type='text' class='form-control' formControlName='uname'/>
+        </div>
+        <div class='alert alert-danger' [hidden]='registerForm.controls.uname.valid || registerForm.controls.uname.pristine'>
+          User Name is Required
+        </div>
+        
+        <div class='form-group'>
+          <label>Password </label>
+          <input type='text' class='form-control' formControlName='pwd'/>
+        </div>
+        <div class='alert alert-danger' [hidden]='registerForm.controls.pwd.valid || registerForm.controls.pwd.pristine'>
+          Password must be minimum 8 characters long (First Letter should be capital)
+        </div>
+  
+        <div class='form-group'>
+          <label>Mobile Number</label>
+          <input type='number' class='form-control' formControlName='mobile'/>
+        </div>
+        <div class='alert alert-danger' [hidden]='registerForm.controls.mobile.valid || registerForm.controls.mobile.pristine'>
+            Mobile Number is invalid
+        </div>
+        <div class='form-group'>
+          <label>Email</label>
+          <input type='text' class='form-control' formControlName='email'/>
+        </div>
+        <div class='alert alert-danger' [hidden]='registerForm.controls.email.valid || registerForm.controls.email.pristine'>
+          Email is invalid
+        </div>
+  
+        <div>
+          <span [hidden]="regMessage == 'Registered successfully'">
+            <button type='submit' class='btn btn-primary' (click)="registerUser()" [disabled]='!registerForm.valid'>Register</button>
+          </span>
+          <span>
+            {{regMessage}}
+            <span [hidden]="regMessage != 'Registered successfully'">
+                <button type='button' class='btn btn-primary'[routerLink]="['/login']">Login</button>
+            </span>
+          </span>
+        </div>
+  
+    </form>
+  
+  
+  </div>
